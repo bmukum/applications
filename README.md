@@ -1,2 +1,2 @@
-# applications
-Apps, infrastructure and automation I've built.
+# Applications
+This repository contains software apps and automations I've built.
