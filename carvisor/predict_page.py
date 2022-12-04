@@ -31,7 +31,7 @@ le_drive = data["le_drive"]
 
 
 def show_predict_page():
-    st.title("WGU Capstone Project: Car Price Prediction")
+    st.title("Carvisor: Get price estimates before investing in used cars!")
     st.write("""### Please provide some information to predict the price""")
 
     years = (
