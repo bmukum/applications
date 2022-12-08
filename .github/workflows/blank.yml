@@ -49,6 +49,5 @@ jobs:
         with:
           message: |
             `Depracated Manifests`
-            "${{ steps.check.output.stdout  }}"
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            "${{ steps.check.output.stdout }}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
