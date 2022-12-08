@@ -3,7 +3,7 @@ name: Pluto Check
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "test" ]
     paths: ["carvisor/kubernetes/**"]
   pull_request:
     branches: [ "main" ]
