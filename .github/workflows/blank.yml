@@ -45,7 +45,7 @@ jobs:
       #         body: output
       #       })
       - name: post comment
-        uses: mshick/add-pr-comment@v2
+        uses: NejcZdovc/comment-pr@v6
         with:
           message: |
             `Depracated Manifests`
