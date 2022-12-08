@@ -22,7 +22,8 @@ jobs:
       - name: Use pluto
         id: check
         run: |
-          pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations >> $GITHUB_OUTPUT
+          echo "pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations<<EOF" >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
 
       # - name: comment pluto output
       #   uses: actions/github-script@0.9.0
