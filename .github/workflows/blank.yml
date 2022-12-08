@@ -22,7 +22,7 @@ jobs:
       - name: Use pluto
         id: check
         run: |
-          pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations >> $GITHUB OUTPUT
+          pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations
 
       # - name: comment pluto output
       #   uses: actions/github-script@0.9.0
@@ -45,9 +45,9 @@ jobs:
       #         body: output
       #       })
       - name: post comment
-        uses: NejcZdovc/comment-pr@v2
+        uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             `Depracated Manifests`
-            $GITUB_OUTPUT
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+            _(execution **${{ github.run_id }}** / attempt **${{ github.run_attempt }}**)_
+         # github_token: ${{ secrets.GITHUB_TOKEN }}
