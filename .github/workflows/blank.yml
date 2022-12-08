@@ -44,10 +44,10 @@ jobs:
       #         repo: context.repo.repo,
       #         body: output
       #       })
-      - name: post comment ###, '\n'
+      - name: post comment
         uses: NejcZdovc/comment-pr@v2
         with:
           message: |
             `Depracated Manifests`
-            "${{ steps.check.outputs.* }}" 
+            "${{ steps.check.outputs.*, '\n' }}" 
           github_token: ${{ secrets.GITHUB_TOKEN }}
