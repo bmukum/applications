@@ -25,26 +25,26 @@ jobs:
         run: |
           pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations
 
-      - name: comment pluto output
-        uses: actions/github-script@0.9.0
-        continue-on-error: true
-        env:
-          CHECK: ${{ steps.check.output.stdout  }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN}}
-          script: |
-            const output == `#### Pluto Checks \`${{steps.check.outcome}}\`
+      # - name: comment pluto output
+      #   uses: actions/github-script@0.9.0
+      #   continue-on-error: true
+      #   env:
+      #     CHECK: ${{ steps.check.output.stdout  }}
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN}}
+      #     script: |
+      #       const output == `#### Pluto Checks \`${{steps.check.outcome}}\`
 
-            <details><summary>
-            \`\`\`\n
-            ${process.env.CHECK}
-            *Pusher: @{{ github.actor}}, Action \`${{ github.event_name }}\`*`;
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: output
-            })
+      #       <details><summary>
+      #       \`\`\`\n
+      #       ${process.env.CHECK}
+      #       *Pusher: @{{ github.actor}}, Action \`${{ github.event_name }}\`*`;
+      #       github.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: output
+      #       })
       - name: post comment
         uses: mshick/add-pr-comment@v2
         message: |
