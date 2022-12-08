@@ -45,7 +45,7 @@ jobs:
       #         body: output
       #       })
       - name: post comment
-        uses: NejcZdovc/comment-pr@v6
+        uses: NejcZdovc/comment-pr@v2
         with:
           message: |
             `Depracated Manifests`
