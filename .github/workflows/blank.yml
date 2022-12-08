@@ -22,8 +22,7 @@ jobs:
       - name: Use pluto
         id: check
         run: |
-          echo "pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations<<EOF" >> $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
+          pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations >> $GITHUB OUTPUT
 
       # - name: comment pluto output
       #   uses: actions/github-script@0.9.0
@@ -50,5 +49,5 @@ jobs:
         with:
           message: |
             `Depracated Manifests`
-            "${{ steps.check.outputs.* }}" 
+            $GITUB_OUTPUT
           github_token: ${{ secrets.GITHUB_TOKEN }}
