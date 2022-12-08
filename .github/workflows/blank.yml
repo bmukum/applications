@@ -22,8 +22,10 @@ jobs:
       - name: Use pluto
         id: check
         run: |
-          echo "output=$(pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations)<<EOF" >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+          output=$(pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations)<<EOF"
+          echo "$output<<EOF" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
 
       # - name: comment pluto output
       #   uses: actions/github-script@0.9.0
