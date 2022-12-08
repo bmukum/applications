@@ -21,4 +21,4 @@ jobs:
 
       - name: Use pluto
         run: |
-          pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecated
+          pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations
