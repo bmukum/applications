@@ -22,7 +22,7 @@ jobs:
       - name: Use pluto
         id: check
         run: |
-          pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations
+          pluto detect-files -d carvisor/kubernetes --ignore-removals --ignore-deprecations >> $GITHUB_OUTPUT
 
       # - name: comment pluto output
       #   uses: actions/github-script@0.9.0
@@ -44,10 +44,10 @@ jobs:
       #         repo: context.repo.repo,
       #         body: output
       #       })
-      - name: post comment
+      - name: post comment ###, '\n'
         uses: NejcZdovc/comment-pr@v2
         with:
           message: |
             `Depracated Manifests`
-            "${{ steps.check.output.stdout }}"
+            "${{ steps.check.outputs.* }}" 
           github_token: ${{ secrets.GITHUB_TOKEN }}
