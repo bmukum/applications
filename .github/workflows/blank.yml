@@ -33,19 +33,11 @@ jobs:
           OUTPUT="${OUTPUT//$'\r'/'%0D'}"
           echo "::set-output name=output::$(echo "$OUTPUT")"
 
-  post_comment:
-    runs-on: ubuntu-latest
-    needs: check
-
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
       - name: post comment
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             `Depracated Manifests`
-            
+
             ${{ needs.check.outputs.deprecated_versions }}
-         # github_token: ${{ secrets.GITHUB_TOKEN }}
+
