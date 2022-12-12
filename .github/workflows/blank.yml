@@ -34,7 +34,7 @@ jobs:
           echo $OUTPUT >> $GITHUB_OUTPUT
   
   post_comment:
-    runs-on: ubuntu-latest
+    runs_on: ubuntu-latest
     needs: check
 
     steps:
