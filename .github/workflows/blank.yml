@@ -32,7 +32,7 @@ jobs:
           OUTPUT="${OUTPUT//$'\n'/'%0A'}"
           OUTPUT="${OUTPUT//$'\r'/'%0D'}"
           echo "$OUTPUT"
-          echo "::set-output name=output::$(echo "$OUTPUT")"
+          echo "$OUTPUT" >> $GITHUB_OUTPUT
   
   post_comment:
     runs-on: ubuntu-latest
