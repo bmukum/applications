@@ -31,11 +31,10 @@ jobs:
           OUTPUT="${OUTPUT//'%'/'%25'}"
           OUTPUT="${OUTPUT//$'\n'/'%0A'}"
           OUTPUT="${OUTPUT//$'\r'/'%0D'}"
-          echo "$OUTPUT"
           echo "::set-output name=output::$(echo "$OUTPUT")"
   
   post_comment:
-    runs-on: ubuntu-latest
+    runs_on: ubuntu-latest
     needs: check
 
     steps:
