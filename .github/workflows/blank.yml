@@ -32,7 +32,7 @@ jobs:
           OUTPUT="${OUTPUT//$'\n'/'%0A'}"
           OUTPUT="${OUTPUT//$'\r'/'%0D'}"
           echo "::set-output name=output::$(echo "$OUTPUT")"
-  
+
   post_comment:
     runs_on: ubuntu-latest
     needs: check
