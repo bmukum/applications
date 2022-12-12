@@ -34,7 +34,7 @@ jobs:
           echo "::set-output name=output::$(echo "$OUTPUT")"
 
   post_comment:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: check
 
     steps:
