@@ -10,13 +10,14 @@ on:
     paths: ["carvisor/kubernetes/*"]
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
 
     outputs:
       deprecated_versions: ${{ steps.check.outputs.output}}
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout
+        uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
       - name: Download Pluto
@@ -32,32 +33,19 @@ jobs:
           OUTPUT="${OUTPUT//$'\r'/'%0D'}"
           echo "$OUTPUT"
           echo "::set-output name=output::$(echo "$OUTPUT")"
+  
+  post_comment:
+    runs_on: ubuntu-latest
+    needs: check
 
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
 
-      # - name: comment pluto output
-      #   uses: actions/github-script@0.9.0
-      #   continue-on-error: true
-      #   env:
-      #     CHECK: ${{ steps.check.output.stdout  }}
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN}}
-      #     script: |
-      #       const output == `#### Pluto Checks \`${{steps.check.outcome}}\`
-
-      #       <details><summary>
-      #       \`\`\`\n
-      #       ${process.env.CHECK}
-      #       *Pusher: @{{ github.actor}}, Action \`${{ github.event_name }}\`*`;
-      #       github.issues.createComment({
-      #         issue_number: context.issue.number,
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         body: output
-      #       })
       - name: post comment
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             `Depracated Manifests`
-            ${{  }}
+            ${{ needs.check.outputs.deprecated_versions }}
          # github_token: ${{ secrets.GITHUB_TOKEN }}
